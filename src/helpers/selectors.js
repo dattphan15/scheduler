@@ -1,4 +1,4 @@
-export function getAppointmentsForDay(state, day){
+export default function getAppointmentsForDay(state, day){
   //Once we have access to the appointment array for the given day, we'll need to iterate through it, comparing where it's id matches the id of states.appointments and return that value.
 
   const appointmentDay = state.days.find(currentDay => { return currentDay.name === day} )
