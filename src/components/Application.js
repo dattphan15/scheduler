@@ -8,6 +8,8 @@ import axios from "axios";
 
 
 export default function Application(props) {
+
+
   const [state, setState] = useState({
     day: "Monday",
     days: [],
@@ -32,12 +34,16 @@ export default function Application(props) {
     console.log("APPOINTMENT :", appointment)
     console.log("APPOINTMENTS :", appointments)
 
-    setState({ ...state, appointments 
-    });
+    return axios.put(`/api/appointments/${id}`, appointment)
+      .then(() => {
+        setState({ 
+          ...state, 
+          appointments 
+        });
+      })
 
   }
   
-
   const appointments = getAppointmentsForDay(state, state.day);
   const interviewers = getInterviewersForDay(state, state.day);
 
@@ -51,7 +57,7 @@ export default function Application(props) {
         time={appointment.time}
         interview={interview}
         interviewers={interviewers}
-        bookInterview={bookInterview(appointment.id, interview)}
+        bookInterview={bookInterview}
       />
     );
   });
