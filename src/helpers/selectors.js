@@ -68,28 +68,31 @@ export function selectUserByName(state, name) {
   return filteredNames;
 }
 
+export function getInterviewersForDay(state, day){
+  //Once we have access to the appointment array for the given day, we'll need to iterate through it, comparing where it's id matches the id of states.appointments and return that value.
 
-/*
+  const appointmentDay = state.days.find(currentDay => { return currentDay.name === day} )
+  if (!appointmentDay) {
+    return []
+  }
+  const ids = appointmentDay.interviewers
+  return ids.map(id => state.interviewers [id])
+}
 
-state : { days:
-  [ { id: 1, name: 'Monday', appointments: [Array] },
-    { id: 2, name: 'Tuesday', appointments: [Array] } ],
- appointments:
-  { '1': { id: 1, time: '12pm', interview: null },
-    '2': { id: 2, time: '1pm', interview: null },
-    '3': { id: 3, time: '2pm', interview: [Object] },
-    '4': { id: 4, time: '3pm', interview: null },
-    '5': { id: 5, time: '4pm', interview: [Object] } },
- interviewers:
-  { '1':
-     { id: 1,
-       name: 'Sylvia Palmer',
-       avatar: 'https://i.imgur.com/LpaY82x.png' },
-    '2':
-     { id: 2,
-       name: 'Tori Malcolm',
-       avatar: 'https://i.imgur.com/Nmx0Qxo.png' } } }
 
-interview : { student: 'Archie Cohen', interviewer: 2 }
 
-*/
+// This function will log the values that we pass to it for now. In the future it will allow us to change the local state when we book an interview. The next logical step is to ensure that the child can call the action with the correct data.
+export function bookInterview(id, interview) {
+  console.log(id, interview);
+}
+
+
+
+export function save(name, interviewer) {
+  const interview = {
+    student: name,
+    interviewer
+  };
+
+  // props.bookInterview(appointment.id, interview)
+}
