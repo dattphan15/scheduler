@@ -8,8 +8,6 @@ import axios from "axios";
 
 
 export default function Application(props) {
-
-
   const [state, setState] = useState({
     day: "Monday",
     days: [],
@@ -17,31 +15,50 @@ export default function Application(props) {
     interviewers: {},
   })
 
+  
   function bookInterview(id, interview) {
-    console.log("ID :", id, "INTERVIEW :", interview);
-
+    // console.log("ID :", id, "INTERVIEW :", interview);
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
     };
-
+    
     const appointments = {
       ...state.appointments,
       [id]: appointment
     };
-
-    console.log("NEW STATE :", state)
-    console.log("APPOINTMENT :", appointment)
-    console.log("APPOINTMENTS :", appointments)
-
+    
+    // console.log("NEW STATE :", state)
+    // console.log("APPOINTMENT :", appointment)
+    // console.log("APPOINTMENTS :", appointments)
+    
     return axios.put(`/api/appointments/${id}`, appointment)
-      .then(() => {
-        setState({ 
-          ...state, 
-          appointments 
-        });
-      })
+    .then(() => {
+      setState({ 
+        ...state, 
+        appointments 
+      });
+    })
+    
+  }
 
+
+  function cancelInterview(id, interview) {
+
+    const appointment = {
+      ...state.appointments[id], 
+      interview: { ...interview } 
+    };
+
+    const appointments = { 
+      ...state.appointments, 
+      [id]: appointment 
+    };
+
+    return axios.delete(`/api/appointments/${id}`)
+      .then(() => {
+        setState({ ...state, appointments });
+      })
   }
   
   const appointments = getAppointmentsForDay(state, state.day);
@@ -58,6 +75,7 @@ export default function Application(props) {
         interview={interview}
         interviewers={interviewers}
         bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
     );
   });
