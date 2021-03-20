@@ -14,7 +14,7 @@ const SHOW = "SHOW";
 const CREATE = "CREATE";
 const EDIT = "EDIT";
 const SAVING = "SAVING";
-const DELETE = "DELETE";
+const DELETING = "DELETING";
 const CONFIRM = "CONFIRM";
 const ERROR_SAVE = "ERROR_SAVE";
 const ERROR_DELETE = "ERROR_DELETE";
@@ -42,7 +42,7 @@ export default function Appointment(props) {
 
 
   function cancel() {
-    transition(DELETE, true)
+    transition(DELETING, true)
     props
       .cancelInterview(props.id)
       .then(() => transition(EMPTY))
@@ -78,20 +78,38 @@ export default function Appointment(props) {
         onCancel={back}
         onSave={save}
         />
-        )}
-        {mode === EDIT && (
-          <Form
-            name={props.interview.student}
-            interviewer={props.interview.interviewer.id}
-            interviewers={props.interviewers}
-            onCancel={back}
-            onSave={save}
-          />
-        )}
-      {mode === SAVING && ( <Status message={"Saving"} /> )}
-      {mode === ERROR_SAVE && ( <Error message={"Could not save your appointment"} onClose={back} /> )}
-      {mode === DELETE && ( <Status message={"Deleting"} /> )}
-      {mode === ERROR_DELETE && ( <Error message={"Could not delete your appointment"}  onClose={back} /> )}
+      )}
+      {mode === EDIT && (
+        <Form
+          name={props.interview.student}
+          interviewer={props.interview.interviewer.id}
+          interviewers={props.interviewers}
+          onCancel={back}
+          onSave={save}
+        />
+      )}
+      {mode === SAVING && ( 
+      <Status 
+        message={"Saving"} 
+        /> 
+      )}
+      {mode === ERROR_SAVE && ( 
+      <Error 
+        message={"Failed to save"} 
+        onClose={back} 
+        /> 
+      )}
+      {mode === DELETING && ( 
+      <Status 
+        message={"Deleting"} 
+        /> 
+      )}
+      {mode === ERROR_DELETE && ( 
+      <Error 
+        message={"Could not delete your appointment"} 
+        onClose={back} 
+        /> 
+      )}
       {mode === CONFIRM && ( 
         <Confirm 
         message={"Are you sure you want to delete?"} 
