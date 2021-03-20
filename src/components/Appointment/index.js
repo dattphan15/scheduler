@@ -46,7 +46,7 @@ export default function Appointment(props) {
     props
       .cancelInterview(props.id)
       .then(() => transition(EMPTY))
-      .catch(() => { transition(ERROR_DELETE, true) })
+      .catch(error => transition(ERROR_DELETE, true))
   }
 
   function confirm() {
@@ -63,7 +63,11 @@ export default function Appointment(props) {
       <Header
         time={props.time}
       />
-      {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
+      {mode === EMPTY && ( 
+        <Empty 
+        onAdd={() => transition(CREATE)} 
+        />
+      )}
       {mode === SHOW && (
         <Show
           student={props.interview.student}
@@ -89,32 +93,32 @@ export default function Appointment(props) {
         />
       )}
       {mode === SAVING && ( 
-      <Status 
-        message={"Saving"} 
+        <Status 
+          message={"Saving"} 
         /> 
       )}
       {mode === ERROR_SAVE && ( 
-      <Error 
-        message={"Failed to save"} 
-        onClose={back} 
+        <Error 
+          message={"Failed to save"} 
+          onClose={back} 
         /> 
       )}
       {mode === DELETING && ( 
-      <Status 
-        message={"Deleting"} 
+        <Status 
+          message={"Deleting"} 
         /> 
       )}
       {mode === ERROR_DELETE && ( 
-      <Error 
-        message={"Could not delete your appointment"} 
-        onClose={back} 
+        <Error 
+          message={"Failed to delete"} 
+          onClose={back} 
         /> 
       )}
       {mode === CONFIRM && ( 
         <Confirm 
-        message={"Are you sure you want to delete?"} 
-        onConfirm={cancel} 
-        onCancel={back}
+          message={"Are you sure you want to delete?"} 
+          onConfirm={cancel} 
+          onCancel={back}
         /> 
       )}
     </article>
