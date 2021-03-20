@@ -2,27 +2,32 @@ import { useState } from "react";
 
 export default function useVisualMode(initial) {
   const [history, setHistory] = useState([initial])
+  console.log("HISTORY",history)
+  console.log("USESTATE", useState)
   
   const transition = function (newMode, replace = false) {
     if (replace) {
-      setHistory([...history.slice(0, -1), newMode]); 
+      setHistory(prev => [...prev.slice(0, -1), newMode]); 
       // changes initial history state to history (starting from the beginning, minus the last item in the history array), then adding newMode to the history.
       // old history = [a,b,c], new mode = d
       // new history = [a,b,d]
     } else {
-    setHistory([...history, newMode]); // changes initial history state to history + newMode
+    setHistory(prev => [...prev, newMode]); // changes initial history state to history + newMode
     }
   };
 
-  const back = function () {
-    if (history.length < 2) { // prevents user from going back past the initial mode
+  const back = () => {
+    if (history.length < 2) {
       return
     }
+    //remove last element of the array
     const newHistory = [...history];
-    setHistory([...history.slice(0, -1)]); // sets history as initial history minus the last mode
+    newHistory.pop();
+    setHistory(newHistory)
   }
 
-  const mode = history[history.length - 1]
-  
-  return { mode, transition, back };
+  //we want the last history of the array
+  const mode = history[history.length -1]
+
+return { mode, transition, back };
 }
