@@ -10,16 +10,16 @@ export default function Application(props) {
     state,
     setDay,
     bookInterview,
-    cancelInterview
+    cancelInterview, 
   } = useApplicationData();
 
-  console.log(
-    "--->",
-    state,
-    setDay,
-    bookInterview,
-    cancelInterview
-  )
+  // console.log(
+  //   "--->",
+  //   state,
+  //   setDay,
+  //   bookInterview,
+  //   cancelInterview
+  // )
 
   const interviewers = getInterviewersForDay(state, state.day);
 
