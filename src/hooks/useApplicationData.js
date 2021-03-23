@@ -101,7 +101,7 @@ export default function useApplicationData(props) {
     });
   }, [])
 
-  console.log("THIS IS THE STATE", state)
+  // console.log("THIS IS THE STATE", state)
 
   return { state, setDay, bookInterview, cancelInterview }
 
