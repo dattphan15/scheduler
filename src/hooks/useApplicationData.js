@@ -12,7 +12,7 @@ export default function useApplicationData(props) {
   const setDay = day => setState({ ...state, day });
 
   const getSpotsCount = (dayObj, appointments) => {
-    console.log("DAYOBJ :", dayObj)
+    // console.log("DAYOBJ :", dayObj)
     let count = 0;
     for (const id of dayObj.appointments) {
       const appointment = appointments[id];
@@ -39,7 +39,7 @@ export default function useApplicationData(props) {
 
 
   function bookInterview(id, interview) {
-    console.log("ID :", id, "INTERVIEW :", interview);
+    // console.log("ID :", id, "INTERVIEW :", interview);
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -65,7 +65,7 @@ export default function useApplicationData(props) {
 
 
   function cancelInterview(id, interview) {
-    console.log("ID :", id, "INTERVIEW :", interview);
+    // console.log("ID :", id, "INTERVIEW :", interview);
     const appointment = {
       ...state.appointments[id], 
       interview: null
