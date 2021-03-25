@@ -1,12 +1,25 @@
 # Interview Scheduler
 A single page application built using React. The Interview Scheduler allows a user to view the current interview schedule, create an appointment, or edit/cancel an existing appointment that they have. 
 
+#### Landing Page
 !["Screenshot of Landing Page"](https://github.com/dattphan15/scheduler/blob/master/docs/01-Landing-Page.png)
+
+#### Booking A New Interview
 !["Screenshot of Booking A New Interview"](https://github.com/dattphan15/scheduler/blob/master/docs/02-Book-Edit-Interview.png)
+
+#### Deleting An Existing Interview
 !["Screenshot of Deleting An Existing Interview"](https://github.com/dattphan15/scheduler/blob/master/docs/03-Delete-Interview.png)
+
+#### Error Handling (Deletion)
 !["Screenshot of Error Handling (Deletion)"](https://github.com/dattphan15/scheduler/blob/master/docs/04-Error-Delete.gif)
+
+#### Error Handling (Saving)
 !["Screenshot of Error Handling (Saving)"](https://github.com/dattphan15/scheduler/blob/master/docs/05-Error-Edit.gif)
+
+#### Deleting Loader
 !["Screenshot of Deleting Loader"](https://github.com/dattphan15/scheduler/blob/master/docs/06-Deleting.png)
+
+#### Saving Loader
 !["Screenshot of Saving Loader"](https://github.com/dattphan15/scheduler/blob/master/docs/07-Saving.png)
 
 ## Notes on Functionality
