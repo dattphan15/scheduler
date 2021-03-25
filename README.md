@@ -1,6 +1,11 @@
 # Interview Scheduler
 A single page application built using React. The Interview Scheduler allows a user to view the current interview schedule, create an appointment, or edit/cancel an existing appointment that they have. 
 
+## Application Notes
+• Data is persisted by the API server using a PostgreSQL database.__
+• The client application communicates with an API server over HTTP, using the JSON format.__
+• Jest tests are used through the development of the project.
+
 #### Landing Page
 !["Screenshot of Landing Page"](https://github.com/dattphan15/scheduler/blob/master/docs/01-Landing-Page.png)
 
@@ -22,10 +27,6 @@ A single page application built using React. The Interview Scheduler allows a us
 #### Saving Loader
 !["Screenshot of Saving Loader"](https://github.com/dattphan15/scheduler/blob/master/docs/07-Saving.png)
 
-## Notes on Functionality
-• Data is persisted by the API server using a PostgreSQL database.
-• The client application communicates with an API server over HTTP, using the JSON format.
-• Jest tests are used through the development of the project.
 
 ## App Features
 • Interviews can be booked between Monday and Friday.
