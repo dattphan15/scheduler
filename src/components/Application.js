@@ -13,16 +13,9 @@ export default function Application(props) {
     cancelInterview, 
   } = useApplicationData();
 
-  // console.log(
-  //   "--->",
-  //   state,
-  //   setDay,
-  //   bookInterview,
-  //   cancelInterview
-  // )
-
   const interviewers = getInterviewersForDay(state, state.day);
 
+  // Displays all appointments for each day
   const appointments = getAppointmentsForDay(state, state.day).map(
     appointment => {
       return (

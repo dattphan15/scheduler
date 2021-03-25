@@ -21,6 +21,6 @@ import Appointment from "components/Appointment/index";
 describe("Appointment", () => {
   it("renders without crashing", async () => {
     // await render(<Application />);
-    console.log(prettyDOM(<Application />))
+    render(prettyDOM(<Application />))
   });
 });

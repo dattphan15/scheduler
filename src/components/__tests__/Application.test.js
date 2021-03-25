@@ -30,37 +30,44 @@ describe("Appointment", () => {
     */
 
   it("loads data, books an interview and reduces the spots remaining for the first day by 1", async () => {
+    
+    // 1. Render the Application
     const { container, debug } = render(<Application />);
     await waitForElement(() => getByText(container, "Archie Cohen"));
     
+    // 2. Selects the first appointment slot available
     const appointments = getAllByTestId(container, "appointment");
-    
     const appointment = getAllByTestId(container, "appointment")[0];
 
+    // 3. Clicks on Add Button to create new appointment
     const addButton = getByAltText(appointment, "Add");
     fireEvent.click(addButton);
 
+    // 4. Enters in name
     const formInput = getByPlaceholderText(appointment, /enter student name/i)
     fireEvent.change(formInput, {
       target: { value: "Lydia Miller-Jones" }
     });
 
+    // 5. Selects interviewer, then saves
     const interviewerImg = getByAltText(appointment, "Sylvia Palmer");
     fireEvent.click(interviewerImg);
 
     const saveButton = getByText(appointment, "Save");
     fireEvent.click(saveButton);
 
-
+    // 6. Confirms the Saving loader to be present
     expect(getByText(appointment, "Saving")).toBeInTheDocument();
 
-    // Wait until the element with the text "Lydia Miller-Jones" is displayed.
+    // 7. Wait until the element with the text "Lydia Miller-Jones" is displayed.
     await waitForElement(() => queryByText(appointment, "Lydia Miller-Jones"));
   
+    // 8. Finds current day being updated
     const day = getAllByTestId(container, "day").find(day =>
       queryByText(day, "Monday")
     );
 
+    // 9. Confirms no spots remaining after the last spot was booked
     expect(getByText(day, "no spots remaining")).toBeInTheDocument();
 
   })

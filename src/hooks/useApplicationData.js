@@ -11,8 +11,8 @@ export default function useApplicationData(props) {
   
   const setDay = day => setState({ ...state, day });
 
+  // Gets spots available for the day
   const getSpotsCount = (dayObj, appointments) => {
-    // console.log("DAYOBJ :", dayObj)
     let count = 0;
     for (const id of dayObj.appointments) {
       const appointment = appointments[id];
@@ -23,7 +23,7 @@ export default function useApplicationData(props) {
     return count;
   }
 
-  
+  // Updates spots available for the day after a booking is deleted or added
   const updateSpots = (dayName, days, appointments) => {
     const day = days.find((item) => item.name === dayName);
     const unbooked = getSpotsCount(day, appointments);
@@ -38,8 +38,8 @@ export default function useApplicationData(props) {
   }
 
 
+  // Adds new booking to database
   function bookInterview(id, interview) {
-    // console.log("ID :", id, "INTERVIEW :", interview);
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -64,8 +64,8 @@ export default function useApplicationData(props) {
   }
 
 
+  // Deletes booking from database
   function cancelInterview(id, interview) {
-    // console.log("ID :", id, "INTERVIEW :", interview);
     const appointment = {
       ...state.appointments[id], 
       interview: null
@@ -101,7 +101,6 @@ export default function useApplicationData(props) {
     });
   }, [])
 
-  // console.log("THIS IS THE STATE", state)
 
   return { state, setDay, bookInterview, cancelInterview }
 
