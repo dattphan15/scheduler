@@ -51,7 +51,7 @@ A single page application built using React. The Interview Scheduler allows a us
 • The Scheduler client application is created using Create React App. Express is the basis for the Scheduler API server application. \
   Both servers run concurrently; requests are proxied from the Webpack development server to the API server. 
 
-### Dependencies: \
+### Dependencies: 
 axios: ^0.21.1 \
 classnames: ^2.2.6 \
 normalize.css: ^8.0.1 \
