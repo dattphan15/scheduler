@@ -4,7 +4,7 @@ A single page application built using React. The Interview Scheduler allows a us
 ## Application Notes
 • Data is persisted by the API server using a PostgreSQL database. \
 • The client application communicates with an API server over HTTP, using the JSON format. \
-• Jest tests are used through the development of the project. \
+• Jest tests are used through the development of the project.
 
 #### Landing Page
 !["Screenshot of Landing Page"](https://github.com/dattphan15/scheduler/blob/master/docs/01-Landing-Page.png)
@@ -41,7 +41,7 @@ A single page application built using React. The Interview Scheduler allows a us
 • A user is shown an error if an interview cannot be saved or deleted. \
 • A user is shown a status indicator while asynchronous operations are in progress. \
 • When the user presses the close button of the error they are returned to the Form or Show view (skipping Status and Confirm). \
-• The application makes API requests to load and persist data. We do not lose data after a browser refresh. \
+• The application makes API requests to load and persist data. We do not lose data after a browser refresh. 
 
 ## Technical Specifications
 • React \
@@ -49,7 +49,7 @@ A single page application built using React. The Interview Scheduler allows a us
 • Axios \
 • Storybook, Webpack Dev Server, Jest, Testing Library \
 • The Scheduler client application created using Create React App. Express is the basis for the Scheduler API server application. \
-  Both servers run concurrently; requests are proxied from the Webpack development server to the API server. \
+  Both servers run concurrently; requests are proxied from the Webpack development server to the API server. 
 
 Dependencies:
 axios: ^0.21.1 \
@@ -57,7 +57,7 @@ classnames: ^2.2.6 \
 normalize.css: ^8.0.1 \
 react: ^16.9.0 \
 react-dom: ^16.9.0 \
-react-scripts: 3.0.0 \
+react-scripts: 3.0.0 
 
 ## Setup
 
